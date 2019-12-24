@@ -1,14 +1,36 @@
+
 <!DOCTYPE html>
 <html>
+<head>
+     <title>basic gallery in javascript </title>
+     <link rel="stylesheet" type="text/css" href="dom.css">
+</head>
+<body>
+<div class="main">
+   <header class="header">
+   </header>
+   <div class="wrapper">
+       <div id="big_img">
+          <img src="small-1.png" width="920" height="400" id="myPicture" class="border" />
+         
+         
+       </div>
+       <span>
+            <button id="prev">prev</button>
+            <button id="next">next</button>
+       </span>
+       <div class="thumbnail-inner">
 
-   <head>
-    <script src="yair.js"></script>
-      <title>HTML base Tag</title>
-      
-   </head>
+          <img src="small-1.png"   id="small-1"/>
+          <img src="small-2.png"   id="small-2"/>
+          <img src="small-3.png"   id="small-3"/>
+          <img src="small-4.png"   id="small-4"/>
+          <img src="small-5.png"   id="small-5"/>
+          <img src="small-6.png"   id="small-6"/>
 
-   <body>
-    <div id="img"><img id="image1" height="400px" width="600px" border="5" style="border-color:white;" /></div>
-   </body>
- 
+       </div>
+    </div>
+</div>
+<script type="text/javascript" src="dom.js"></script>
+</body>
 </html>
