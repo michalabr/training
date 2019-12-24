@@ -1,6 +1,15 @@
-function pigIt(str){
-  return str.split(' ').map(function(x){
-    if(x == "?" || x =="!") { return x;} else{
-    console.log(x);
-    return x.slice(1) + x .slice(0,1) + 'ay';}}).join(' ')
-}
+
+
+var images = ['1.png', '2.png', '3.png','4.png','5.png','6.png'];
+
+
+function slide(){
+  var num = Math.floor((Math.random() * 6) +0);
+  var img1 = images[num];
+  document.querySelector("#image1").src= img1;
+ 
+ }
+ setTimeout(function(){ slide(); },5);
+
+//call same function again for x of seconds
+
