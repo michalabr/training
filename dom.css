@@ -30,19 +30,23 @@ span{
     float:left;
     margin:20px;
 }
-#big_img {
-    width:920px;
+#big_img  {
+    display: flex;
+    justify-content: center;
+    width:600px;
     height: 420px;
-    margin:20px 20px 0px 20px;
+    margin-left: 150px;
+    
+    
 }
-.thumbnail-inner{
+#thumbnail-inner{
     width:920px;
     height: 120px;
     background-color: antiquewhite;
     float: left;
     margin-left: 20px;
 }
-.thumbnail-inner img{
+#thumbnail-inner img{
     width:130px;
     height: 100px;
     margin:8px 0px 0px 12px;
@@ -51,6 +55,6 @@ span{
     opacity: 0.5;
     cursor: pointer;
 }
-.thumbnail-inner img:hover{
+#thumbnail-inner img:hover{
     opacity: 1;
 }

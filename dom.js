@@ -1,48 +1,53 @@
+var images = ['small-1.png', 'small-2.png', 'small-3.png','small-4.png','small-5.png','small-6.png'];
+var cuurPic =0;
+var num = 0
+var prevBtn;
+var nextBtn;
 
-
-var images = ['small-1.png', 'small-2.png', 'small-3.png','small-4.png','small-5.png','small-6.png','small-7.png'];
-
-window.onload = gallery;
-
-
-document.getElementById('prev').onclick =imgChanger
-document.getElementById('next').onclick =imgChanger
+// document.getElementById('prev').onclick =imgChanger
+// document.getElementById('next').onclick =imgChanger
 function gallery(){
-     // gallery is the name of function
-     var allimages = document.images;
-     //now we create a variable allimages
-     //and we store all images in this allimages variable
-     for(var i=0; i<allimages.length; i++){
-          //now we create a for loop
-          if(allimages[i].id.indexOf("small") > -1){
-               allimages[i].onclick = imgChanger;
-               //in above line we are adding a listener to all the thumbs stored inside the allimages array on onclick event.
-          }
+    navigationInit();
+     var thumbnails = document.getElementById("thumbnail-inner");
+     for(var i=0; i<images.length; i++){
+        var elem = document.createElement("img");
+        elem.src = images[i];
+        var id = i.toString();
+        elem.id = id;
+        elem.addEventListener("click", imgChanger);
+        thumbnails.appendChild(elem);
      }
 }
+var navigationInit = function () {
+  var navigation = document.getElementById("nev");
+  prevBtn = document.createElement('button');
+  nextBtn = document.createElement('button');
+  prevBtn.id = 'prev';
+  prevBtn.innerHTML = 'prev';
+  prevBtn.addEventListener("click", imgChanger);
+  prevBtn.hidden = true;
+  nextBtn.id = 'next';
+  nextBtn.innerHTML = 'next';
+  nextBtn.addEventListener("click", imgChanger);
+  navigation.appendChild(prevBtn);
+  navigation.appendChild(nextBtn);
+};
 function imgChanger(){
-  var currPic = document.getElementById('myPicture').src
-  
-  currPic = parseInt(currPic.split("-")[1].split('.')[0]);
-  console.log(currPic);
   if(this.id === 'prev'){
-    console.log("here");
-    currPic --;
-    var t = "small-" + currPic.toString() + ".png";
-    console.log(t);
-    document.getElementById('myPicture').src = t;
-
+    cuurPic === 0 ? cuurPic = 5: cuurPic --;
   }else if (this.id === 'next') {
-    currPic ++;
-    var t = "small-" + currPic.toString() + ".png";
-    console.log(t);
-    document.getElementById('myPicture').src = t;
+    cuurPic === 5 ? cuurPic = 0: cuurPic ++;
   }else{
-    document.getElementById('myPicture').src = this.id + ".png";
+    cuurPic = Number(this.id) ;
   }
+  cuurPic == images.length - 1 ? nextBtn.hidden = true : nextBtn.hidden = false;
+  cuurPic == 0 ? prevBtn.hidden = true : prevBtn.hidden = false;
+  console.log(cuurPic);
+  document.getElementById('myPicture').src = images[cuurPic];
+  
 }
 function slide(){
-     var num = Math.floor((Math.random() * 6) +0);
+     num === 5? num = 0:num++;
      var img1 = images[num];
      document.getElementById('myPicture').src =img1
 }
@@ -50,3 +55,4 @@ window.setInterval(function(){
   slide();
   /// call your function here
 }, 10000);
+gallery();
